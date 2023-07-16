@@ -8,14 +8,13 @@ using System.Threading.Tasks;
 
 namespace MOVIE.PREFERENCES.REPO.MODELS
 {
-    public class PeliculaGeneroRepoDto
+    public class UsuarioGeneroRepoDto
     {
-
-        public int PeliculaId {  get; set; }
+        public int UsuarioId {  get; set; }
 
         public int GeneroId { get; set; }
 
-        public PeliculaRepoDto Pelicula { get; set; }
+        public UsuarioRepoDto Usuario { get; set; }
 
         public GeneroRepoDto Genero { get; set; }
 

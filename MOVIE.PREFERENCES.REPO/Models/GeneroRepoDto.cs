@@ -18,5 +18,7 @@ namespace MOVIE.PREFERENCES.REPO.MODELS
 
         public List<PeliculaGeneroRepoDto> PeliculaGenero { get; set; }
 
+        public List<UsuarioGeneroRepoDto> UsuarioGenero { get; set; }
+
     }
 }

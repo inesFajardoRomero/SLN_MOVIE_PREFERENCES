@@ -28,6 +28,8 @@ namespace MOVIE.PREFERENCES.REPO.DBCONTEXT
 
         public DbSet<UsuarioRepoDto> UsuarioRepoDto { get; set; }
 
+        public DbSet<UsuarioGeneroRepoDto> UsuarioGeneroRepoDto { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //base.OnModelCreating(modelBuilder);
@@ -35,7 +37,9 @@ namespace MOVIE.PREFERENCES.REPO.DBCONTEXT
             modelBuilder.Entity<GeneroRepoDto>().ToTable("Genero");
             modelBuilder.Entity<PeliculaGeneroRepoDto>().ToTable("PeliculaGenero");
             modelBuilder.Entity<UsuarioRepoDto>().ToTable("Usuario");
+            modelBuilder.Entity<UsuarioGeneroRepoDto>().ToTable("UsuarioGenero");
             modelBuilder.Entity<PeliculaGeneroRepoDto>().HasKey(x => new { x.PeliculaId, x.GeneroId });
+            modelBuilder.Entity<UsuarioGeneroRepoDto>().HasKey(x => new { x.UsuarioId, x.GeneroId });
         }
     }
 }

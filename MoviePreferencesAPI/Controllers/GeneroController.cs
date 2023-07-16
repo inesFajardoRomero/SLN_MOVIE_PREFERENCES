@@ -10,25 +10,25 @@ namespace MoviePreferencesAPI.Controllers
     [Route("api/[controller]")]
     public class GeneroController : ControllerBase
     {
-        private readonly IRepositorio<Int32, PeliculaGeneroRepoDto> generoRepositorio;
+        private readonly IRepositorio<Int32, GeneroRepoDto> generoRepositorio;
 
         private readonly ILogger<GeneroController> _logger;
 
         public GeneroController(ILogger<GeneroController> logger,
-            IRepositorio<Int32, PeliculaGeneroRepoDto> generoRepositorio)
+            IRepositorio<Int32, GeneroRepoDto> generoRepositorio)
         {
             _logger = logger;
             this.generoRepositorio = generoRepositorio;
         }
 
         [HttpGet(Name = "GetGeneros")]
-        public List <PeliculaGeneroRepoDto> GetAll()
+        public List<GeneroRepoDto> GetAll()
         {
             return generoRepositorio.listar();
         }
 
         [HttpGet("{id}")]
-        public PeliculaGeneroRepoDto GetById(int id)
+        public GeneroRepoDto GetById(int id)
         {
             return generoRepositorio.Buscar(id);
         }

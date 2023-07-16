@@ -26,10 +26,14 @@ builder.Services.AddDbContext<MovieContext>(options =>
 
 builder.Services.AddScoped<IRepositorio<Int32, PeliculaRepoDto>, PeliculaRepoService>();
 builder.Services.AddScoped<IRepositorio<Int32, GeneroRepoDto>, GeneroRepoService>();
+builder.Services.AddScoped<IRepositorio<Int32, UsuarioRepoDto>, UsuarioRepoService>();
 
 var app = builder.Build();
-
-using(var scope = app.Services.CreateScope())
+app.UseCors(policy => policy.AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .SetIsOriginAllowed(origin => true)
+                            .AllowCredentials());
+using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<MovieContext>();
     context.Database.Migrate();

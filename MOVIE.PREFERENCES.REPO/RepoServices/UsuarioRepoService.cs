@@ -10,20 +10,20 @@ using System.Threading.Tasks;
 
 namespace MOVIE.PREFERENCES.REPO.RepoServices
 {
-    public class PeliculaRepoService : IRepositorio<Int32, PeliculaRepoDto>
+    public class UsuarioRepoService : IRepositorio<Int32, UsuarioRepoDto>
     {
         private readonly MovieContext _context;
 
-        public PeliculaRepoService(MovieContext context) 
+        public UsuarioRepoService(MovieContext context) 
         { 
             this._context = context;
         }
 
-        public PeliculaRepoDto Buscar(int id)
+        public UsuarioRepoDto Buscar(int id)
         {
             try
             {
-                return _context.PeliculaRepoDto.Where(x => x.Id == id).Include(x => x.PeliculaGenero).ThenInclude(x => x.Genero).FirstOrDefault();
+                return _context.UsuarioRepoDto.Where(x => x.Id == id).FirstOrDefault();
                
             }
             catch (Exception)
@@ -32,11 +32,25 @@ namespace MOVIE.PREFERENCES.REPO.RepoServices
             }
         }
 
-        public List<PeliculaRepoDto> listar()
+        public List<UsuarioRepoDto> listar()
         {
             try
             {
-                return _context.PeliculaRepoDto.Include(x => x.PeliculaGenero).ToList();
+                return _context.UsuarioRepoDto.ToList();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+        public UsuarioRepoDto Add(UsuarioRepoDto usuario)
+        {
+            try
+            {
+                return _context.UsuarioRepoDto.Where(x => x.Id == usuario.Id).FirstOrDefault();
+
             }
             catch (Exception)
             {
