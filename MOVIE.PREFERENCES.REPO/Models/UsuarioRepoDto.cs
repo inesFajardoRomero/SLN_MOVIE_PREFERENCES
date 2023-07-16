@@ -21,6 +21,6 @@ namespace MOVIE.PREFERENCES.REPO.MODELS
 
         public string Apellido { get; set; }
 
-        public virtual Collection<GeneroRepoDto> Generos { get; set; }
+        public virtual Collection<PeliculaGeneroRepoDto> Generos { get; set; }
     }
 }

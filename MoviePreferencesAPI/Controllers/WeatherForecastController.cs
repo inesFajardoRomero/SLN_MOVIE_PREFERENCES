@@ -8,19 +8,19 @@ namespace MoviePreferencesAPI.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private readonly IRepositorio<Int32, MovieRepoDto> pelicularepositorio;
+        private readonly IRepositorio<Int32, PeliculaRepoDto> pelicularepositorio;
 
         private readonly ILogger<WeatherForecastController> _logger;
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger,
-            IRepositorio<Int32, MovieRepoDto> pelicularepositorio)
+            IRepositorio<Int32, PeliculaRepoDto> pelicularepositorio)
         {
             _logger = logger;
             this.pelicularepositorio = pelicularepositorio;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public MovieRepoDto Get()
+        public PeliculaRepoDto Get()
         {
             return pelicularepositorio.Buscar(1);
         }

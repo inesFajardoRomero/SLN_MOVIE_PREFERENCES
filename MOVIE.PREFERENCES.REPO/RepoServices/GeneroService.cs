@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MOVIE.PREFERENCES.REPO.DBCONTEXT;
+﻿using MOVIE.PREFERENCES.REPO.DBCONTEXT;
 using MOVIE.PREFERENCES.REPO.Interfaces;
 using MOVIE.PREFERENCES.REPO.MODELS;
 using System;
@@ -10,21 +9,20 @@ using System.Threading.Tasks;
 
 namespace MOVIE.PREFERENCES.REPO.RepoServices
 {
-    public class PeliculaRepoService : IRepositorio<Int32, PeliculaRepoDto>
+    public class GeneroRepoService : IRepositorio<Int32, GeneroRepoDto>
     {
         private readonly MovieContext _context;
 
-        public PeliculaRepoService(MovieContext context) 
+        public GeneroRepoService(MovieContext context) 
         { 
             this._context = context;
         }
 
-        public PeliculaRepoDto Buscar(int id)
+        public GeneroRepoDto Buscar(int id)
         {
             try
             {
-                return _context.PeliculaRepoDto.Where(x => x.Id == id).Include(x => x.PeliculaGenero).ThenInclude(x => x.Genero).FirstOrDefault();
-               
+                return _context.GeneroRepoDto.Where(x => x.Id == id).FirstOrDefault();
             }
             catch (Exception)
             {
@@ -32,11 +30,11 @@ namespace MOVIE.PREFERENCES.REPO.RepoServices
             }
         }
 
-        public List<PeliculaRepoDto> listar()
+        public List<GeneroRepoDto> listar()
         {
             try
             {
-                return _context.PeliculaRepoDto.Include(x => x.PeliculaGenero).ThenInclude(x => x.Genero).ToList()
+                return _context.GeneroRepoDto.ToList();
             }
             catch (Exception)
             {

@@ -8,15 +8,17 @@ using System.Threading.Tasks;
 
 namespace MOVIE.PREFERENCES.REPO.MODELS
 {
-    public class GeneroRepoDto
+    public class PeliculaGeneroRepoDto
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id {  get; set; }
+        public int PeliculaId {  get; set; }
 
-        public string Nombre { get; set; }
+        public int GeneroId { get; set; }
 
-        public List<PeliculaGeneroRepoDto> PeliculaGenero { get; set; }
+        public PeliculaRepoDto Pelicula { get; set; }
+
+        public GeneroRepoDto Genero { get; set; }
 
     }
 }

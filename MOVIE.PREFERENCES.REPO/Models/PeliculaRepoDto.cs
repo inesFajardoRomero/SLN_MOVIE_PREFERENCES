@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MOVIE.PREFERENCES.REPO.MODELS
 {
-    public class MovieRepoDto
+    public class PeliculaRepoDto
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -22,8 +22,8 @@ namespace MOVIE.PREFERENCES.REPO.MODELS
 
         public string ImagenPoster { get; set; }
 
-        //public string Genero { get; set; }
+        public List<PeliculaGeneroRepoDto> PeliculaGenero { get; set; }
 
-        public virtual ICollection<GeneroRepoDto> Genero { get; set; }
+
     }
 }

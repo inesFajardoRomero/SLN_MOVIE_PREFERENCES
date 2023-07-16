@@ -4,6 +4,7 @@ using MOVIE.PREFERENCES.REPO.DBCONTEXT;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MOVIE.PREFERENCES.REPO.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    partial class MovieContextModelSnapshot : ModelSnapshot
+    [Migration("20230716153428_PeliculaGenero")]
+    partial class PeliculaGenero
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,19 +44,29 @@ namespace MOVIE.PREFERENCES.REPO.Migrations
 
             modelBuilder.Entity("MOVIE.PREFERENCES.REPO.MODELS.PeliculaGeneroRepoDto", b =>
                 {
-                    b.Property<int>("PeliculaId")
+                    b.Property<string>("IdGenero")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("IdPelicula")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPelicula"));
+
                     b.Property<int>("GeneroId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PeliculaId")
                         .HasColumnType("int");
 
                     b.Property<int?>("UsuarioRepoDtoId")
                         .HasColumnType("int");
 
-                    b.HasKey("PeliculaId", "GeneroId");
+                    b.HasKey("IdGenero", "IdPelicula");
 
                     b.HasIndex("GeneroId");
+
+                    b.HasIndex("PeliculaId");
 
                     b.HasIndex("UsuarioRepoDtoId");
 
