@@ -4,6 +4,7 @@ using MOVIE.PREFERENCES.REPO.DBCONTEXT;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MOVIE.PREFERENCES.REPO.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    partial class MovieContextModelSnapshot : ModelSnapshot
+    [Migration("20230716074247_SEGUNDO-DB")]
+    partial class SEGUNDODB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,7 +59,7 @@ namespace MOVIE.PREFERENCES.REPO.Migrations
 
                     b.HasIndex("UsuarioRepoDtoId");
 
-                    b.ToTable("Genero", (string)null);
+                    b.ToTable("GeneroRepoDto");
                 });
 
             modelBuilder.Entity("MOVIE.PREFERENCES.REPO.MODELS.MovieRepoDto", b =>
@@ -85,7 +88,7 @@ namespace MOVIE.PREFERENCES.REPO.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pelicula", (string)null);
+                    b.ToTable("Usuario", (string)null);
                 });
 
             modelBuilder.Entity("MOVIE.PREFERENCES.REPO.MODELS.UsuarioRepoDto", b =>
@@ -118,7 +121,7 @@ namespace MOVIE.PREFERENCES.REPO.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuario", (string)null);
+                    b.ToTable("UsuarioRepoDto");
                 });
 
             modelBuilder.Entity("GeneroRepoDtoMovieRepoDto", b =>

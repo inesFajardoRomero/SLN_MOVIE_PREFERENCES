@@ -22,10 +22,16 @@ namespace MOVIE.PREFERENCES.REPO.DBCONTEXT
 
         public DbSet<MovieRepoDto> MovieRepoDto { get; set; }
 
+        public DbSet<GeneroRepoDto> GeneroRepoDto { get; set; }
+
+        public DbSet<UsuarioRepoDto> UsuarioRepoDto { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<MovieRepoDto>().ToTable("Movie");
+            modelBuilder.Entity<MovieRepoDto>().ToTable("Pelicula");
+            modelBuilder.Entity<GeneroRepoDto>().ToTable("Genero");
+            modelBuilder.Entity<UsuarioRepoDto>().ToTable("Usuario");
         }
     }
 }

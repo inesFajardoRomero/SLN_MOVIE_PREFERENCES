@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using MOVIE.PREFERENCES.REPO.Interfaces;
+using MOVIE.PREFERENCES.REPO.MODELS;
 
 namespace MoviePreferencesAPI.Controllers
 {
@@ -6,28 +8,21 @@ namespace MoviePreferencesAPI.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+        private readonly IRepositorio<Int32, MovieRepoDto> pelicularepositorio;
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger,
+            IRepositorio<Int32, MovieRepoDto> pelicularepositorio)
         {
             _logger = logger;
+            this.pelicularepositorio = pelicularepositorio;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        public MovieRepoDto Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            return pelicularepositorio.Buscar(1);
         }
     }
 }

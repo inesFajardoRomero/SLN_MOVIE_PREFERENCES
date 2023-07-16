@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using MOVIE.PREFERENCES.REPO.DBCONTEXT;
+using MOVIE.PREFERENCES.REPO.Interfaces;
+using MOVIE.PREFERENCES.REPO.MODELS;
+using MOVIE.PREFERENCES.REPO.RepoServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,8 @@ builder.Services.AddDbContext<MovieContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("MovieConection"));
 });
+
+builder.Services.AddScoped<IRepositorio<Int32, MovieRepoDto>, PeliculaRepoService>();
 
 var app = builder.Build();
 
