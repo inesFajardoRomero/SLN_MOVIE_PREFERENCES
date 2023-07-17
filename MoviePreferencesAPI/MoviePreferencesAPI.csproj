@@ -19,6 +19,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MOVIE.PREFERENCES.REPO\MOVIE.PREFERENCES.REPO.csproj" />
+    <ProjectReference Include="..\MOVIEPREFERENCES.PDF\MOVIEPREFERENCES.PDF.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Program.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
 </Project>

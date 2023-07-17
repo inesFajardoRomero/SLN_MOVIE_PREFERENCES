@@ -6,13 +6,15 @@ using MOVIE.PREFERENCES.REPO.DBCONTEXT;
 using MOVIE.PREFERENCES.REPO.Interfaces;
 using MOVIE.PREFERENCES.REPO.MODELS;
 using MOVIE.PREFERENCES.REPO.RepoServices;
+using MOVIEPREFERENCES.PDF.Interfaces;
+using MOVIEPREFERENCES.PDF.Services;
 using Newtonsoft;
 using System.Text;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.;
+
 builder.Services.AddControllers(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true).AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
@@ -48,6 +50,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ClockSkew = TimeSpan.Zero
         };
     });
+
+builder.Services.AddScoped<IPdfService, PdfService>();
 
 var app = builder.Build();
 app.UseCors(policy => policy.AllowAnyHeader()

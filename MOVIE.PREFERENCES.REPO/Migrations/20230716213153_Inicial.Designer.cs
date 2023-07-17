@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MOVIE.PREFERENCES.REPO.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    [Migration("20230716195751_Inicial")]
+    [Migration("20230716213153_Inicial")]
     partial class Inicial
     {
         /// <inheritdoc />
