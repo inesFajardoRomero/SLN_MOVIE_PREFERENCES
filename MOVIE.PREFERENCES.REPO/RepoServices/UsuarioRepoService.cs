@@ -23,7 +23,7 @@ namespace MOVIE.PREFERENCES.REPO.RepoServices
         {
             try
             {
-                return _context.UsuarioRepoDto.Where(x => x.Id == id).FirstOrDefault();
+                return _context.UsuarioRepoDto.Where(x => x.Id == id).Include(x => x.UsuarioGenero).FirstOrDefault();
                
             }
             catch (Exception)

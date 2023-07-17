@@ -59,7 +59,7 @@ namespace MoviePreferencesAPI.Controllers
 
             if(usuario != null)
             {
-                return ConstruirToken(credenciales, usuario.Rol);
+                return ConstruirToken(credenciales, usuario.Rol, usuario.Id);
             }
             else
             {
@@ -69,13 +69,14 @@ namespace MoviePreferencesAPI.Controllers
 
         }
 
-        private RespuestaLogin ConstruirToken(CredencialesDto credenciales, string rol)
+        private RespuestaLogin ConstruirToken(CredencialesDto credenciales, string rol, int id)
         {
 
             var claims = new List<Claim>()
             {
                 new Claim("usuario",credenciales.usuario),
-                new Claim("rol", rol ?? "")
+                new Claim("rol", rol ?? ""),
+                new Claim("id", id.ToString())
             };
 
             var llave = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["llavejwt"]));
