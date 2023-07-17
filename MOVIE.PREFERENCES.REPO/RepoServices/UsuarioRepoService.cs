@@ -23,7 +23,7 @@ namespace MOVIE.PREFERENCES.REPO.RepoServices
         {
             try
             {
-                return _context.UsuarioRepoDto.Where(x => x.Id == id).Include(x => x.UsuarioGenero).FirstOrDefault();
+                return _context.UsuarioRepoDto.Where(x => x.Id == id).Include(x => x.UsuarioGenero).ThenInclude(x=> x.Genero).FirstOrDefault();
                
             }
             catch (Exception)
@@ -49,20 +49,7 @@ namespace MOVIE.PREFERENCES.REPO.RepoServices
         {
             try
             {
-                /*var usuarioGenero = new List<UsuarioGeneroRepoDto>();
-                usuarioGenero.AddRange(usuario.UsuarioGenero); 
-
-                var usuer = new UsuarioRepoDto()
-                {
-                    Usuario = usuario.Usuario,
-                    Contrasena = usuario.Contrasena,
-                    Correo = usuario.Correo,
-                    Nombre = usuario.Nombre,
-                    Apellido = usuario.Apellido,
-
-                }*/
-                
-                _context.UsuarioRepoDto.Add(usuario);
+               _context.UsuarioRepoDto.Add(usuario);
                 _context.SaveChanges();
                 return usuario;
 

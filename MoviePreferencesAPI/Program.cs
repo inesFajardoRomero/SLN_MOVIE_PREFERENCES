@@ -64,7 +64,7 @@ app.UseCors(policy => policy.AllowAnyHeader()
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<MovieContext>();
-    context.Database.Migrate();
+    //context.Database.Migrate();
 }
 
 
