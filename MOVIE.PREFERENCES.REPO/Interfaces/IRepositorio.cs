@@ -12,6 +12,6 @@ namespace MOVIE.PREFERENCES.REPO.Interfaces
 
         M Buscar(I id);
 
-        M Add(M modelo);
+        M Add(M entidad);
     }
 }

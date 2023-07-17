@@ -49,6 +49,19 @@ namespace MOVIE.PREFERENCES.REPO.RepoServices
         {
             try
             {
+                /*var usuarioGenero = new List<UsuarioGeneroRepoDto>();
+                usuarioGenero.AddRange(usuario.UsuarioGenero); 
+
+                var usuer = new UsuarioRepoDto()
+                {
+                    Usuario = usuario.Usuario,
+                    Contrasena = usuario.Contrasena,
+                    Correo = usuario.Correo,
+                    Nombre = usuario.Nombre,
+                    Apellido = usuario.Apellido,
+
+                }*/
+                
                 _context.UsuarioRepoDto.Add(usuario);
                 _context.SaveChanges();
                 return usuario;

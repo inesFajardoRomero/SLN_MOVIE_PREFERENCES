@@ -19,7 +19,7 @@ namespace MOVIE.PREFERENCES.REPO.RepoServices
             this._context = context;
         }
 
-        public PeliculaRepoDto Add(PeliculaRepoDto modelo)
+        public PeliculaRepoDto Add(PeliculaRepoDto entidad)
         {
             throw new NotImplementedException();
         }
