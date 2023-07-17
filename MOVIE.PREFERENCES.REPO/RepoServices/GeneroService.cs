@@ -18,6 +18,11 @@ namespace MOVIE.PREFERENCES.REPO.RepoServices
             this._context = context;
         }
 
+        public GeneroRepoDto Add(GeneroRepoDto entidad)
+        {
+            throw new NotImplementedException();
+        }
+
         public GeneroRepoDto Buscar(int id)
         {
             try
@@ -41,5 +46,6 @@ namespace MOVIE.PREFERENCES.REPO.RepoServices
                 return null;
             }
         }
+
     }
 }

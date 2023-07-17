@@ -11,5 +11,7 @@ namespace MOVIE.PREFERENCES.REPO.Interfaces
         List<M> listar();
 
         M Buscar(I id);
+
+        M Add(M entidad);
     }
 }

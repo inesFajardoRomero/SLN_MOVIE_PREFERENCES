@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MOVIE.PREFERENCES.REPO.MODELS;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MOVIE.PREFERENCES.REPO.DBCONTEXT
 {
-    public class MovieContext : DbContext
+    public class MovieContext : IdentityDbContext
     {
         public MovieContext(DbContextOptions<MovieContext> options) : base(options) 
         {
@@ -32,7 +33,7 @@ namespace MOVIE.PREFERENCES.REPO.DBCONTEXT
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<PeliculaRepoDto>().ToTable("Pelicula");
             modelBuilder.Entity<GeneroRepoDto>().ToTable("Genero");
             modelBuilder.Entity<PeliculaGeneroRepoDto>().ToTable("PeliculaGenero");
