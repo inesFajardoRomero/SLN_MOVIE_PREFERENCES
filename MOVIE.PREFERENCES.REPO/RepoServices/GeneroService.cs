@@ -18,6 +18,11 @@ namespace MOVIE.PREFERENCES.REPO.RepoServices
             this._context = context;
         }
 
+        public GeneroRepoDto Add(GeneroRepoDto modelo)
+        {
+            throw new NotImplementedException();
+        }
+
         public GeneroRepoDto Buscar(int id)
         {
             try

@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace MOVIE.PREFERENCES.REPO.Interfaces
 {
-    public interface IRepositorio<I,M>
+    public interface IReporteService
     {
-        List<M> listar();
-
-        M Buscar(I id);
-
-        M Add(M modelo);
+        object GenerarReporte();
     }
 }

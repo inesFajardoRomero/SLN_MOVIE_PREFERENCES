@@ -3,6 +3,8 @@ using MOVIE.PREFERENCES.REPO.DBCONTEXT;
 using MOVIE.PREFERENCES.REPO.Interfaces;
 using MOVIE.PREFERENCES.REPO.MODELS;
 using MOVIE.PREFERENCES.REPO.RepoServices;
+using MOVIEPREFERENCES.PDF.Interfaces;
+using MOVIEPREFERENCES.PDF.Services;
 using Newtonsoft;
 using System.Text.Json.Serialization;
 
@@ -10,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers().AddJsonOptions(options =>
+builder.Services.AddControllers(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true).AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
@@ -27,6 +29,8 @@ builder.Services.AddDbContext<MovieContext>(options =>
 builder.Services.AddScoped<IRepositorio<Int32, PeliculaRepoDto>, PeliculaRepoService>();
 builder.Services.AddScoped<IRepositorio<Int32, GeneroRepoDto>, GeneroRepoService>();
 builder.Services.AddScoped<IRepositorio<Int32, UsuarioRepoDto>, UsuarioRepoService>();
+
+builder.Services.AddScoped<IPdfService, PdfService>();
 
 var app = builder.Build();
 app.UseCors(policy => policy.AllowAnyHeader()

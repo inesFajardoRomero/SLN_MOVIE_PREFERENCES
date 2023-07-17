@@ -19,6 +19,11 @@ namespace MOVIE.PREFERENCES.REPO.RepoServices
             this._context = context;
         }
 
+        public PeliculaRepoDto Add(PeliculaRepoDto modelo)
+        {
+            throw new NotImplementedException();
+        }
+
         public PeliculaRepoDto Buscar(int id)
         {
             try

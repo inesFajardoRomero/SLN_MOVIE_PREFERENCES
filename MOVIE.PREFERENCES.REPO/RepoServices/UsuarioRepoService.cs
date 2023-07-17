@@ -49,7 +49,9 @@ namespace MOVIE.PREFERENCES.REPO.RepoServices
         {
             try
             {
-                return _context.UsuarioRepoDto.Where(x => x.Id == usuario.Id).FirstOrDefault();
+                _context.UsuarioRepoDto.Add(usuario);
+                _context.SaveChanges();
+                return usuario;
 
             }
             catch (Exception)

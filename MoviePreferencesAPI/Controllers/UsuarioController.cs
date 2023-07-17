@@ -38,9 +38,8 @@ namespace MoviePreferencesAPI.Controllers
         [HttpPost]
         public ActionResult<UsuarioRepoDto> Create(UsuarioRepoDto usuario)
         {
-            //usuarioRepositorio.Add(usuario);
-            ///_context.SaveChanges();*/
-            return CreatedAtAction(nameof(GetById), new { id = usuario.Id }, usuario);
+
+            return this.usuarioRepositorio.Add(usuario);
 
         }
     }
